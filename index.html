@@ -1100,18 +1100,17 @@
     <a href="https://wa.me/79150439090" target="_blank" class="floating-btn">💬</a>
 
     <script>
-        function submitForm(event) {
+       function submitForm(event) {
     event.preventDefault();
     
-    // Показываем индикатор загрузки
     const submitBtn = event.target.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Отправляем...';
     submitBtn.disabled = true;
     
-    // Собираем данные формы
+    // ВАЖНО: используем дефисы как в HTML
     const formData = {
-        fuel_type: document.getElementById('fuel-type').value,
+        'fuel-type': document.getElementById('fuel-type').value,
         volume: document.getElementById('volume').value,
         address: document.getElementById('address').value,
         date: document.getElementById('date').value,
@@ -1121,10 +1120,7 @@
         comment: document.getElementById('comment').value
     };
     
-    // ЗАМЕНИТЕ НА ВАШ URL NETLIFY
-    const netlifyUrl = 'https://wondrous-lily-39343d.netlify.app/.netlify/functions/telegram';
-    
-    fetch(netlifyUrl, {
+    fetch('https://wondrous-lily-39343d.netlify.app/.netlify/functions/telegram', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -1134,23 +1130,21 @@
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+            alert('Заявка успешно отправлена!');
             document.querySelector('form').reset();
         } else {
-            alert('Ошибка при отправке заявки. Попробуйте позвонить: +7 (915) 043-90-90');
+            alert('Ошибка при отправке заявки.');
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Ошибка при отправке заявки. Попробуйте позвонить: +7 (915) 043-90-90');
+        alert('Ошибка при отправке заявки.');
     })
     .finally(() => {
-        // Восстанавливаем кнопку
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
     });
 }
-
 
         function highlightPhone() {
             const phoneElement = document.querySelector('.header-phone');
