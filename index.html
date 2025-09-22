@@ -1103,20 +1103,28 @@
         function submitForm(event) {
     event.preventDefault();
     
+    // Показываем индикатор загрузки
+    const submitBtn = event.target.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Отправляем...';
+    submitBtn.disabled = true;
+    
     // Собираем данные формы
     const formData = {
-        'fuel-type': document.getElementById('fuel-type').value,
-        'volume': document.getElementById('volume').value,
-        'address': document.getElementById('address').value,
-        'date': document.getElementById('date').value,
-        'time': document.getElementById('time').value,
-        'company': document.getElementById('company').value,
-        'phone': document.getElementById('phone').value,
-        'comment': document.getElementById('comment').value
+        fuel_type: document.getElementById('fuel-type').value,
+        volume: document.getElementById('volume').value,
+        address: document.getElementById('address').value,
+        date: document.getElementById('date').value,
+        time: document.getElementById('time').value,
+        company: document.getElementById('company').value,
+        phone: document.getElementById('phone').value,
+        comment: document.getElementById('comment').value
     };
     
-    // Отправляем в Telegram
-    fetch('send_to_telegram.php', {
+    // ЗАМЕНИТЕ НА ВАШ URL NETLIFY
+    const netlifyUrl = 'https://relaxed-swan-7a3a0a.netlify.app/';
+    
+    fetch(netlifyUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -1125,16 +1133,21 @@
     })
     .then(response => response.json())
     .then(data => {
-        if (data.status === 'success') {
+        if (data.success) {
             alert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
             document.querySelector('form').reset();
         } else {
-            alert('Ошибка при отправке заявки. Попробуйте позвонить нам: +7 (915) 043-90-90');
+            alert('Ошибка при отправке заявки. Попробуйте позвонить: +7 (915) 043-90-90');
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Ошибка при отправке заявки. Попробуйте позвонить нам: +7 (915) 043-90-90');
+        alert('Ошибка при отправке заявки. Попробуйте позвонить: +7 (915) 043-90-90');
+    })
+    .finally(() => {
+        // Восстанавливаем кнопку
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
     });
 }
 
