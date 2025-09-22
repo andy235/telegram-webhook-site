@@ -12,8 +12,8 @@ exports.handler = async (event, context) => {
   }
 
   // Получаем переменные окружения
-  const BOT_TOKEN = 8278065479:AAFu6k5FtbXy8lnAqJnDKTCwaT3BFYfA1mg;
-  const CHAT_ID = 384859079;
+  const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+  const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
   // Проверяем наличие токена и chat ID
   if (!BOT_TOKEN || !CHAT_ID) {
