@@ -988,8 +988,8 @@
             <form class="form-container" onsubmit="submitForm(event)">
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="fuel-type">Тип топлива</label>
-                        <select id="fuel-type" name="fuel-type" required>
+                        <label for="fuelType">Тип топлива</label>
+                        <select id="fuelType" name="fuelType" required>
                             <option value="">Выберите тип</option>
                             <option value="summer">ДТ летнее</option>
                             <option value="winter">ДТ зимнее</option>
@@ -1123,7 +1123,7 @@
     
     // Собираем данные формы
     const formData = {
-        fuel_type: document.getElementById('fuel-type').value,
+        fuelType: document.getElementById('fuelType').value,
         volume: document.getElementById('volume').value,
         address: document.getElementById('address').value,
         date: document.getElementById('date').value,
