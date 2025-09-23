@@ -64,7 +64,7 @@ exports.handler = async (event, context) => {
     }
 
     // Check required fields
-    const requiredFields = ['fuel-type', 'volume', 'address', 'date', 'time', 'company', 'phone'];
+    const requiredFields = ['fuelType', 'volume', 'address', 'date', 'time', 'company', 'phone'];
     const missingFields = requiredFields.filter(field => !data[field]);
     
     if (missingFields.length > 0) {
@@ -111,7 +111,7 @@ exports.handler = async (event, context) => {
     // Create message
     const message = `🚛 <b>НОВАЯ ЗАЯВКА НА ДОСТАВКУ ДИЗТОПЛИВА</b>
 
-📋 <b>Тип топлива:</b> ${formatFuelType(data['fuel-type'])}
+📋 <b>Тип топлива:</b> ${formatFuelType(data['fuelType'])}
 ⛽ <b>Объем:</b> ${formatVolume(data.volume)} л
 📍 <b>Адрес:</b> ${data.address}
 📅 <b>Дата:</b> ${formatDate(data.date)}
