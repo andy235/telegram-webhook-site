@@ -119,7 +119,7 @@ exports.handler = async (event, context) => {
 🏢 <b>Компания:</b> ${data.company}
 📞 <b>Телефон:</b> ${data.phone}${data.comment ? `\n💭 <b>Комментарий:</b> ${data.comment}` : ''}
 
-⏰ <i>Заявка получена: ${new Date().toLocaleString('ru-RU')}</i>`;
+⏰ <i>Заявка получена: ${new Date().toLocaleString('ru-RU', {timeZone: 'Europe/Moscow'})}</i>
 
     // Send to Telegram
     const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
