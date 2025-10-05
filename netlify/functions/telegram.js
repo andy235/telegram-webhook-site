@@ -116,7 +116,7 @@ exports.handler = async (event, context) => {
 📍 <b>Адрес:</b> ${data.address}
 📅 <b>Дата:</b> ${formatDate(data.date)}
 🕐 <b>Время:</b> ${data.time}
-🏢 <b>Компания:</b> ${data.company}
+${data.company ? `\n🏢 <b>Компания:</b> ${data.company}` : ''}
 📞 <b>Телефон:</b> ${data.phone}${data.comment ? `\n💭 <b>Комментарий:</b> ${data.comment}` : ''}
 
 ⏰ <i>Заявка получена: ${new Date().toLocaleString('ru-RU', {timeZone: 'Europe/Moscow'})}</i>`;
