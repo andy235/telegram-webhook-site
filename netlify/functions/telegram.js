@@ -64,7 +64,7 @@ exports.handler = async (event, context) => {
     }
 
     // Check required fields
-    const requiredFields = ['fuelType', 'volume', 'address', 'date', 'time', 'company', 'phone'];
+    const requiredFields = ['fuelType', 'volume', 'address', 'date', 'time', 'phone'];
     const missingFields = requiredFields.filter(field => !data[field]);
     
     if (missingFields.length > 0) {
