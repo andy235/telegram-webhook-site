@@ -1,3 +1,33 @@
+# robots.txt для dieseltract.ru
+
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /.netlify/
+Disallow: /private/
+
+# Основные поисковики
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# Блокируем плохих ботов
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemap
 Sitemap: https://dieseltract.ru/sitemap.xml
