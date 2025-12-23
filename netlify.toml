@@ -41,30 +41,3 @@
   for = "/*.js"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
-```
-
-## Структура файлов проекта:
-```
-dieseltract.ru/
-├── index.html
-├── robots.txt
-├── sitemap.xml
-├── manifest.json
-├── netlify.toml
-├── _headers (для Netlify)
-├── _redirects (для Netlify)
-├── .htaccess (для Apache)
-├── favicon.ico
-├── favicon-16x16.png
-├── favicon-32x32.png
-├── apple-touch-icon.png
-├── safari-pinned-tab.svg
-└── icons/
-    ├── icon-72x72.png
-    ├── icon-96x96.png
-    ├── icon-128x128.png
-    ├── icon-144x144.png
-    ├── icon-152x152.png
-    ├── icon-192x192.png
-    ├── icon-384x384.png
-    └── icon-512x512.png
